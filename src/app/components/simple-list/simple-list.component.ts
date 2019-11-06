@@ -13,7 +13,7 @@ export class SimpleListComponent implements OnInit {
   clientChamado: Cliente = {
     "name": "",
     "service": "",
-    "tempo": 0
+    "hrChegada": 0
   }
 
   listClients: Cliente[] = [];
@@ -33,7 +33,6 @@ export class SimpleListComponent implements OnInit {
 
   ngOnInit() {
     this.getClientes()
-    this.loopingClients()
     this.myDateTimer()
   }
 
@@ -55,34 +54,7 @@ export class SimpleListComponent implements OnInit {
 
   }
 
-  loopingClients() {
-    setInterval(() => {
 
-      this.listClients.forEach((item, index) => {
-
-        if (this.listClients[index].tempo > 0) {
-          this.listClients[index].tempo--;
-          this.firebaseService.updateClientTime(this.listClients[index]);
-
-        } else {
-          
-          this.listHistorico.push(this.listClients[index]);
-
-          if (this.listHistorico.length > 3) {
-            this.listHistorico.shift()
-          }
-
-          this.clientChamado = this.listClients[index];
-          this.firebaseService.addHistorico(this.clientChamado);
-
-          this.listClients[index].mesa = Math.round(Math.random() * (10 - 1));
-          this.firebaseService.deleteClient(this.listClients[index].id);
-        }
-
-      })
-
-    }, 3000)
-  }
 
   compare(a, b) {
     const genreA = a.tempo;

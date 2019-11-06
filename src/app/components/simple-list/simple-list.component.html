@@ -8,50 +8,7 @@
     <div class="container-css mx-auto">
         <div class="mt-5"></div>
         <div class="row">
-            <div class="col-md-6 pl-0">
-                <div class="col-md-12">
-
-                    <div class="card-top card-name card-color shadow-sm border-itau p-2">
-                        <div>
-                            <h2 class="d-flex align-items-start ml-3">último chamado</h2>
-                        </div>
-                        <h2 class=" text-center text-size-name" *ngIf="clientChamado.name"><strong>{{clientChamado.name}}</strong></h2>
-                        <div class="card-body p-0 d-flex justify-content-end align-items-end">
-                            <p class="text-size-historico mesa" *ngIf="clientChamado.mesa">Mesa:{{clientChamado.mesa}}</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-md-12 mt-4">
-                    <div class="card-color card-top card-left card-last shadow-sm p-0">
-                        <div>
-                            <h2 class="d-flex align-items-start ml-3">histórico</h2>
-                        </div>
-
-                        <div class="card-body ml-2 p-0">
-                            <div class="row">
-                                <div class="col-md-6 d-flex align-items-start flex-column p-0 mt-2">
-                                    <strong class="text-size-historico ml-4">Nome</strong>
-                                    <ul class="p-0 text-size-historico">
-                                        <li *ngFor="let client of listHistorico | slice:0:3" class="text-size ml-4">{{client.name}}</li>
-                                        <li class="text-size-historico ml-4">{{client.name}}</li>
-                                    </ul>
-                                </div>
-
-                                <div class="col-md-6 d-flex align-items-center flex-column p-0 mt-2">
-                                    <strong class="text-size-historico">Mesa</strong>
-                                    <ul class="p-0 text-size-historico">
-                                        <li *ngFor="let client of listHistorico | slice:0:3 " class="text-size ml-4">{{client.mesa}}</li>
-                                        <li class="text-size-historico ">{{client.mesa}}</li>
-                                    </ul>
-                                </div>
-
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
+        
             <div class="col-md-6 p-0 m-0 mt-2">
                 <div class=" p-2 card-line card-left p-0 card-color shadow-sm fila-box">
                     <div>
@@ -63,21 +20,28 @@
                                 <div class="text-size-fila w-100 p-0">
                                     <div class="row w-100 m-0 d-flex align-items-center ml-3">
 
-                                        <strong class="col-md-6 m-0 p-0 text-left">Nome</strong>
-                                        <strong class="col-md-6 m-0 p-0 text-left">Tempo</strong>
+                                        <strong class="col-md-4 m-0 p-0 text-left">Nome</strong>
+                                        <strong class="col-md-4 m-0 p-0 text-left">Serviço</strong>
+                                        <strong class="col-md-4 m-0 p-0">chegada</strong>
 
                                         <div *ngFor="let client of listClients | slice:0:15" class="text-size-fila d-flex w-100">
 
-                                            <div class="col-md-6 m-0 p-0 text-left d-flex">
+                                            <div class="col-md-4 m-0 p-0 text-left d-flex">
                                                 <ul class="p-0 d-flex flex-column">
                                                     <li class="m-0 p-0 text-size-fila">{{client.name}}</li>
                                                 </ul>
                                             </div>
 
-
-                                            <div class="col-md-6 m-0 p-0 text-left d-flex">
+                                            <div class="col-md-4 m-0 p-0 text-left d-flex">
                                                 <ul class="p-0 d-flex flex-column">
-                                                    <li class="text-size-fila">{{client.tempo}} min</li>
+                                                    <li class="m-0 p-0 text-size-fila">{{client.servico}}</li>
+                                                </ul>
+                                            </div>
+
+
+                                            <div class="col-md-4 m-0 p-0 text-left d-flex">
+                                                <ul class="p-0 d-flex flex-column">
+                                                    <li class="text-size-fila">{{client.hrChegada}} Hrs</li>
                                                 </ul>
                                             </div>
                                         </div>
@@ -91,6 +55,7 @@
             </div>
         </div>
     </div>
+
     <footer class="col-md-12 fixed-bottom m-0 p-0 footer border-top p-2">
             <marquee behavior="alternate " id="day" class="text-white">{{santander}}</marquee>
     </footer>

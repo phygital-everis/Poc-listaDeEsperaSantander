@@ -16,7 +16,7 @@ export class FirebaseService {
   private clienteCollection: AngularFirestoreCollection<Cliente>;
 
   constructor(private afs: AngularFirestore) {
-    this.clienteCollection = this.afs.collection<Cliente>('clientes');
+    this.clienteCollection = this.afs.collection<Cliente>('listaEspera');
     this.historicoCollection = this.afs.collection<Cliente>('historico');
 
     this.clientes = this.clienteCollection.snapshotChanges().pipe(
@@ -32,7 +32,7 @@ export class FirebaseService {
   }
 
   updateClientTime(client: Cliente): Promise<void> {
-    return this.clienteCollection.doc(client.id).update({ tempo: client.tempo });
+    return this.clienteCollection.doc(client.id).update({ tempo: client.hrChegada });
   }
 
   getClientes(): Observable<Cliente[]> {
