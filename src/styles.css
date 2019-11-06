@@ -1,0 +1,97 @@
+@import "~bootstrap/dist/css/bootstrap.css";
+@font-face {
+    font-family: 'Open Sans';
+    src: url('/src/assets/fonts/OpenSans-Regular.ttf');
+}
+
+nav {
+    background: #DE0100!important;
+    font-family: 'Open Sans', sans-serif!important;
+    width: wrap;
+    margin: 0;
+}
+
+.div {
+    display: inline-block;
+}
+
+.card-name {
+    height: 200px;
+}
+
+.card-last {
+    height: 255px;
+}
+
+.card-line {
+    height: 480px;
+}
+
+.card-color {
+    background-color: #FAF7F5!important;
+}
+
+h1,
+h2,
+h3 {
+    font-family: 'Open Sans', sans-serif!important;
+    color: #DE0100;
+}
+
+.container-css {
+    width: 90%;
+}
+
+.logoStyle {
+    margin-left: 4%;
+}
+
+.fila-box {
+    width: 90%;
+    margin: auto;
+}
+
+.text-size-historico {
+    font-family: 'Open Sans', sans-serif!important;
+    font-size: 32px;
+}
+
+.text-size-fila {
+    font-family: 'Open Sans', sans-serif!important;
+    font-size: 32px;
+}
+
+.text-size-name {
+    font-family: 'Open Sans', sans-serif!important;
+    font-size: 64px;
+    color: black;
+}
+
+.border-itau {
+    border: 8px solid #DD0200;
+}
+
+.ts {
+    font-size: 64px;
+    margin-left: 62%;
+    font: Bold 64px 70/64px Arial;
+}
+
+.mesa {
+    margin-top: -13px;
+    font-size: 32px;
+    margin-right: 55px;
+    margin-bottom: 10px;
+}
+
+ul {
+    list-style-type: none;
+}
+
+div {
+    border-radius: 10px;
+}
+
+footer {
+    background: #212529;
+}
