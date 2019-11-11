@@ -20,22 +20,6 @@ body {
 	opacity: 4;
 }
 
-.card-name {
-	height: 200px;
-}
-
-.card-last {
-	height: 255px;
-}
-
-.card-line {
-	height: 480px;
-}
-
-.card-color {
-	background-color: #faf7f5 !important;
-}
-
 h1,
 h2 {
 	text-align: left;
@@ -47,6 +31,7 @@ h2 {
 
 .container-css {
 	width: 90%;
+	height: 90%;
 }
 
 .logoStyle {
