@@ -8,67 +8,94 @@
     <div class="container-css mx-auto">
         <div class="mt-5"></div>
         <div class="row">
-            <div class="col-md-8 p-0 m-0 mt-2">
+            <div class="col-md-7 p-0 m-0 mt-2">
 
                     <div>
-                        <h2 class="d-flex ml-3">Gerenciamento de fila</h2>
+                        <h2 class="d-flex ml-4 mb-3">Gerenciamento de fila</h2>
                     </div>
                    
-                        <div class="row">
-                            <div class="col-md-9">
+                            <div class="col-md-9 d-flex">
                                 <div class="text-size-fila w-100 p-0">
-                        
                                     <div class="row w-100 m-0 d-flex align-items-center">
 
-                                        <strong class="col-md-2 mr-3 ml-4 p-0">Setor</strong>
-                                        <strong class="col-md-2 mr-2 p-0">Nome</strong>
-                                        <strong class="col-md-2 mr-3 p-0">Serviço</strong>
-                                        <strong class="col-md-2 mr-3 p-0">Chegada</strong>
-                                        <strong class="col-md-2 ml-3 p-0 ">Chamado</strong>
+                                        <h5 class="col-md-2 mr-3 ml-3 p-0">Setor</h5>
+                                        <h5 class="col-md-2 mr-2 p-0">Nome</h5>
+                                        <h5 class="col-md-2 mr-3 p-0">Serviço</h5>
+                                        <h5 class="col-md-2 mr-3 p-0">Chegada</h5>
+                                        <h5 class="col-md-2 ml-3 p-0 ">Chamado</h5>
 
-                                        <div class="col-md-12 m-0 scroll-bar">
-                                        <div *ngFor="let client of listClients | slice:0:40 " class="text-size-fila d-flex w-100 list-item">
+                                        <div class="col-md-12 m-0 scroll-bar ">
+
+                                        <div *ngFor="let client of listClients | slice:0:15 " class="text-size-fila d-flex w-100 list-item">
 
                                             <div class="col-md-2 m-0 p-0 d-flex ">
                                                 <ul class="p-0 d-flex flex-column ">
-                                                    <li class="m-0 p-0 text-size-fila ml-3">{{client.setor}}</li>
+                                                    <li class="mt-2 p-0 text-size-fila ml-3">{{client.setor}}</li>
                                                 </ul>
                                             </div>
 
                                             <div class="col-md-2 m-0 p-0  d-flex ">
                                                 <ul class="p-0 d-flex flex-column ">
-                                                    <li class="m-0 p-0 text-size-fila text-center ml-3">{{client.name}}</li>
+                                                    <li class="mt-2 p-0 text-size-fila text-center ml-3">{{client.name}}</li>
                                                 </ul>
                                             </div>
 
                                             <div class="col-md-3 m-0 p-0 d-flex">
                                                 <ul class="p-0 d-flex flex-column">
-                                                    <li class="m-0 p-0 text-size-fila text-center ml-3">{{client.service}}</li>
+                                                    <li class="mt-2 p-0 text-size-fila text-center ml-3">{{client.service}}</li>
                                                 </ul>
                                             </div>
 
 
                                             <div class="col-md-2 m-0 p-0  d-flex">
                                                 <ul class="p-0 d-flex flex-column ">
-                                                    <li class="text-size-fila text-center  ml-3">{{client.hrChegada}} Hrs</li>
+                                                    <li class="text-size-fila mt-2 p-0 text-center  ml-3">{{client.hrChegada}} Hrs</li>
                                                 </ul>
                                             </div>
 
                                             <div class="col-md-2 m-0 p-0  d-flex">
                                                 <ul class="p-0 d-flex flex-column ">
-                                                    <li class="text-size-fila text-center ml-5">{{client.chamado}}</li>
+                                                    <li class=" mt-2 p-0 text-size-fila text-center ml-5">{{client.chamado}}</li>
                                                 </ul>
                                             </div>
 
                                         </div>
-                                    </div>
-
                                     </div>
                             
                             </div>
                         </div>
             
                 </div>
+            </div>
+
+            <div class="col-md-5 mt-5 p-0 m-0 text-size-fila ">
+                    <h5 class="col-md-2 mr-3 ml-1 mb-2 p-0 mt-2 ">Histórico</h5>
+                <div class="card text-size-fila">
+
+                        <div class="mt-3"></div>
+                        <div *ngFor="let client of listClients | slice:0:15 " class="text-size-fila d-flex w-100">
+                            
+                            
+                                <div class="col-md-2 m-0 p-0  d-flex ">
+                                        <ul class="p-0 d-flex flex-column ">
+                                            <li class="m-0 p-0 text-size-fila text-center ml-3">{{client.name}}</li>
+                                        </ul>
+                                </div>
+                        
+                                    <div class="col-md-3 m-0 p-0 d-flex">
+                                            <ul class="p-0 d-flex flex-column">
+                                                <li class="m-0 p-0 text-size-fila text-center ml-3">{{client.service}}</li>
+                                            </ul>
+                                    </div>
+
+                                        <div class="col-md-2 m-0 p-0  d-flex">
+                                                <ul class="p-0 d-flex flex-column ">
+                                                    <li class="text-size-fila text-center  ml-3">{{client.hrChegada}} Hrs</li>
+                                                </ul>
+                                        </div>
+                        </div>
+                    </div>
+
             </div>
 
         </div>
