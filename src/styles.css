@@ -16,14 +16,14 @@ nav {
 }
 html,
 body {
-	background: #f3f3f3;
+	background: #f3f3f3 !important;
 	opacity: 4;
 }
 
 h1,
 h2 {
 	text-align: left;
-	font: Regular 24px/28px Open Sans;
+	font: 'Regular' 24px/28px 'Open Sans';
 	letter-spacing: 0;
 	color: #999999;
 	opacity: 1;
