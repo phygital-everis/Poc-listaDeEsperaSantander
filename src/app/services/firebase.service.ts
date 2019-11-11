@@ -3,8 +3,7 @@ import { Cliente } from '../model/cliente-model';
 import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument, DocumentReference } from '@angular/fire/firestore';
 import { map, take } from 'rxjs/operators';
 import { Observable } from 'rxjs';
-import { Mesas } from '../model/mesa-model';
-import { Tempo } from '../model/tempo-model';
+
 
 @Injectable({
   providedIn: 'root'
@@ -16,7 +15,7 @@ export class FirebaseService {
   private clienteCollection: AngularFirestoreCollection<Cliente>;
 
   constructor(private afs: AngularFirestore) {
-    this.clienteCollection = this.afs.collection<Cliente>('listaEspera');
+    this.clienteCollection = this.afs.collection<Cliente>('clientes');
     this.historicoCollection = this.afs.collection<Cliente>('historico');
 
     this.clientes = this.clienteCollection.snapshotChanges().pipe(

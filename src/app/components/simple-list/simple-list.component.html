@@ -9,50 +9,68 @@
         <div class="mt-5"></div>
         <div class="row">
         
-            <div class="col-md-6 p-0 m-0 mt-2">
-                <div class=" p-2 card-line card-left p-0 card-color shadow-sm fila-box">
+            <div class="col-md-8 p-0 m-0 mt-2">
                     <div>
-                        <h2 class="d-flex align-items-start ml-3">fila</h2>
+                        <h2 class="d-flex ml-1">fila</h2>
                     </div>
-                    <div class="card-body p-0">
+                   
                         <div class="row">
-                            <div class="col-md-12 d-flex">
+                            <div class="col-md-9">
                                 <div class="text-size-fila w-100 p-0">
-                                    <div class="row w-100 m-0 d-flex align-items-center ml-3">
+                        
+                                    <div class="row w-100 m-0 d-flex align-items-center">
 
-                                        <strong class="col-md-4 m-0 p-0 text-left">Nome</strong>
-                                        <strong class="col-md-4 m-0 p-0 text-left">Serviço</strong>
-                                        <strong class="col-md-4 m-0 p-0">chegada</strong>
+                                        <strong class="col-md-2 mr-3 ml-4 p-0">Setor</strong>
+                                        <strong class="col-md-2 mr-2 p-0">Nome</strong>
+                                        <strong class="col-md-2 mr-3 p-0">Serviço</strong>
+                                        <strong class="col-md-2 mr-3 p-0">Chegada</strong>
+                                        <strong class="col-md-2 ml-3 p-0 ">Chamado</strong>
 
-                                        <div *ngFor="let client of listClients | slice:0:15" class="text-size-fila d-flex w-100">
+                                        <div class="col-md-12 m-0 scroll-bar">
+                                        <div *ngFor="let client of listClients | slice:0:40 " class="text-size-fila d-flex w-100 list-item">
 
-                                            <div class="col-md-4 m-0 p-0 text-left d-flex">
-                                                <ul class="p-0 d-flex flex-column">
-                                                    <li class="m-0 p-0 text-size-fila">{{client.name}}</li>
+                                            <div class="col-md-2 m-0 p-0 d-flex ">
+                                                <ul class="p-0 d-flex flex-column ">
+                                                    <li class="m-0 p-0 text-size-fila ml-3">{{client.setor}}</li>
                                                 </ul>
                                             </div>
 
-                                            <div class="col-md-4 m-0 p-0 text-left d-flex">
+                                            <div class="col-md-2 m-0 p-0  d-flex ">
+                                                <ul class="p-0 d-flex flex-column ">
+                                                    <li class="m-0 p-0 text-size-fila text-center ml-3">{{client.name}}</li>
+                                                </ul>
+                                            </div>
+
+                                            <div class="col-md-3 m-0 p-0 d-flex">
                                                 <ul class="p-0 d-flex flex-column">
-                                                    <li class="m-0 p-0 text-size-fila">{{client.servico}}</li>
+                                                    <li class="m-0 p-0 text-size-fila text-center ml-3">{{client.service}}</li>
                                                 </ul>
                                             </div>
 
 
-                                            <div class="col-md-4 m-0 p-0 text-left d-flex">
-                                                <ul class="p-0 d-flex flex-column">
-                                                    <li class="text-size-fila">{{client.hrChegada}} Hrs</li>
+                                            <div class="col-md-2 m-0 p-0  d-flex">
+                                                <ul class="p-0 d-flex flex-column ">
+                                                    <li class="text-size-fila text-center  ml-3">{{client.hrChegada}} Hrs</li>
                                                 </ul>
                                             </div>
+
+                                            <div class="col-md-2 m-0 p-0  d-flex">
+                                                <ul class="p-0 d-flex flex-column ">
+                                                    <li class="text-size-fila text-center ml-5">{{client.chamado}}</li>
+                                                </ul>
+                                            </div>
+
                                         </div>
+                                    </div>
 
                                     </div>
-                                </div>
+                            
                             </div>
                         </div>
-                    </div>
+            
                 </div>
             </div>
+
         </div>
     </div>
 

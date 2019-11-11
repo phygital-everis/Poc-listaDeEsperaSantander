@@ -11,9 +11,11 @@ import { Cliente } from 'src/app/model/cliente-model';
 export class SimpleListComponent implements OnInit {
 
   clientChamado: Cliente = {
+    "setor":"",
     "name": "",
     "service": "",
-    "hrChegada": 0
+    "hrChegada": 0,
+    "chamado":false
   }
 
   listClients: Cliente[] = [];
