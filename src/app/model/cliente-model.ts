@@ -4,7 +4,7 @@ export interface Cliente {
   name: string;
   service: string;
   setor:string;
-  hrChegada: number;
+  hrChegada: Date;
   chamado:boolean;
   mesa?: number;
 }

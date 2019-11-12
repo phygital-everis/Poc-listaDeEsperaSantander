@@ -30,6 +30,20 @@ h2 {
     opacity: 1;
 }
 
+ .table-title{
+    color: #999999;
+    font: 'Open Sans';
+    font-size: 1.2em;
+    
+
+ }
+ body div{ 
+    color: #999999;
+    font: 'Open Sans';
+
+    
+
+ }
 .container-css {
     width: 90%;
     height: 90%;
@@ -40,22 +54,23 @@ h2 {
 }
 
 .list-item {
-    background: rgb(223, 221, 221) 0% 0%;
+    background: rgb(255 , 255, 255) 0% 0%;
     border-radius: 10px;
     opacity: 1;
+    box-shadow: 0px 3px 3px -5px rgba(0,0,0,0.75);
 }
 
 
 /* width */
 
-::-webkit-scrollbar {
+div ::-webkit-scrollbar {
     width: 19px;
 }
 
 
 /* Track */
 
-::-webkit-scrollbar-track {
+div  ::-webkit-scrollbar-track {
     box-shadow: inset 0 0 2px grey;
     border-radius: 10px;
 }
@@ -63,7 +78,7 @@ h2 {
 
 /* Handle */
 
-::-webkit-scrollbar-thumb {
+div  ::-webkit-scrollbar-thumb {
     background: #999999;
     border-radius: 10px;
 }
@@ -71,7 +86,7 @@ h2 {
 
 /* Handle on hover */
 
-::-webkit-scrollbar-thumb:hover {
+ div ::-webkit-scrollbar-thumb:hover {
     background: 0#999999;
 }
 
@@ -97,16 +112,21 @@ h2 {
     border-radius: 10px;
     opacity: 1;
     height: 93%;
+    box-shadow: 0px 4px 4px -5px rgba(0,0,0,0.75);
+
 }
 
 .setor {
     border-radius: 10px 0px 0px 10px;
     opacity: 1;
     color: #ffffff;
+    vertical-align: middle;
+    min-height: 100%;
+ 
 }
 
 .ts {
-    font-size: 64px;
+    font-size: 32px;
     margin-left: 62%;
     font: Bold 64px 70/64px Arial;
 }

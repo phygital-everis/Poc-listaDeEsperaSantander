@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FirebaseService } from 'src/app/services/firebase.service';
 import { Cliente } from 'src/app/model/cliente-model';
 import { I18nPluralPipe } from '@angular/common';
+import { MessagingService } from 'src/app/services/messaging-service.ts.service';
 
 @Component({
   selector: 'app-simple-list',
@@ -15,7 +16,7 @@ export class SimpleListComponent implements OnInit {
     "setor":"",
     "name": "",
     "service": "",
-    "hrChegada": 0,
+    "hrChegada": new Date (),
     "chamado":false
   }
 
@@ -29,19 +30,31 @@ export class SimpleListComponent implements OnInit {
   timer: Date;
   myVar = setInterval(this.myDateTimer, 1000);
   santander
+  alertMessage: any;
+  hrChegada :Date;
 
-  constructor(public firebaseService: FirebaseService) {
+  constructor(public firebaseService: FirebaseService,  private messagingService: MessagingService) {
     
   }
 
   ngOnInit() {
     this.getClientes()
     this.myDateTimer()
-  }
 
+    const userId = '941668828183';
+    this.messagingService.requestPermission(userId)
+    this.messagingService.receiveMessage()
+    this.alertMessage = this.messagingService.currentMessage
+   
+  
+  }
+callClient(){
+
+  alert("cliente")
+}
   getColor(setor:string){
 
-    console.log(setor);
+
 
     switch(setor){
       case 'Caixa':
@@ -60,16 +73,17 @@ export class SimpleListComponent implements OnInit {
     this.timer = new Date();
     this.relogio = this.timer.toLocaleTimeString();
     this.day =this.timer.toLocaleDateString();
-    this.santander="-Santander"
-    document.getElementById("relogio").innerHTML = this.relogio;
-    document.getElementById("day").innerHTML = this.day;
-    document.getElementById("santander").innerHTML = this.santander;
+    this.santander="Santander"
+    // document.getElementById("relogio").innerHTML = this.relogio;
+    // document.getElementById("day").innerHTML = this.day;
+    // document.getElementById("santander").innerHTML = this.santander;
   }
 
   getClientes() {
     this.firebaseService.getClientes().subscribe(resp => {
       this.listClients = resp
       this.listClients.sort(this.compare)
+    
     })
 
   }
