@@ -5,14 +5,14 @@
 export const environment = {
   production: false,
   firebaseConfig : {
-    apiKey: "AIzaSyCX2PtgiszM00ilhjv_WRQI3nwRJUB8mIo",
-    authDomain: "poc-listadeesperasantander.firebaseapp.com",
-    databaseURL: "https://poc-listadeesperasantander.firebaseio.com",
-    projectId: "poc-listadeesperasantander",
-    storageBucket: "poc-listadeesperasantander.appspot.com",
-    messagingSenderId: "531233195470",
-    appId: "1:531233195470:web:fbf7e8105fb9de2ec9179f",
-    measurementId: "G-2S00JW6E1F"
+    apiKey: "AIzaSyCDogTUoHp4sou_h1z934vA9WyuwDtDAnU",
+    authDomain: "phygital-santander-fila.firebaseapp.com",
+    databaseURL: "https://phygital-santander-fila.firebaseio.com",
+    projectId: "phygital-santander-fila",
+    storageBucket: "phygital-santander-fila.appspot.com",
+    messagingSenderId: "1068980037632",
+    appId: "1:1068980037632:web:0bbefc43f54395d2b7d0e5",
+    measurementId: "G-HZXY0SD2BZ"
   }
 };
 

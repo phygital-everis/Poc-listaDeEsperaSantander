@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FirebaseService } from 'src/app/services/firebase.service';
 import { Cliente } from 'src/app/model/cliente-model';
+import { I18nPluralPipe } from '@angular/common';
 
 @Component({
   selector: 'app-simple-list',
@@ -36,6 +37,23 @@ export class SimpleListComponent implements OnInit {
   ngOnInit() {
     this.getClientes()
     this.myDateTimer()
+  }
+
+  getColor(setor:string){
+
+    console.log(setor);
+
+    switch(setor){
+      case 'Caixa':
+        return '#739E4B';
+      case 'ATM':
+        return '#B15D85';
+      case 'Gerente':
+        return '#5F82FF';
+
+        default:'purple';
+    }
+
   }
 
   myDateTimer() {
