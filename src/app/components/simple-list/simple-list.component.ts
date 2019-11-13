@@ -16,7 +16,7 @@ export class SimpleListComponent implements OnInit {
     "setor":"",
     "name": "",
     "service": "",
-    "hrChegada": new Date (),
+    "timestamp": new Date (),
     "chamado":false
   }
 
@@ -32,6 +32,8 @@ export class SimpleListComponent implements OnInit {
   santander
   alertMessage: any;
   hrChegada :Date;
+  token: any;
+  userId: string;
 
   constructor(public firebaseService: FirebaseService,  private messagingService: MessagingService) {
     
@@ -40,33 +42,37 @@ export class SimpleListComponent implements OnInit {
   ngOnInit() {
     this.getClientes()
     this.myDateTimer()
+     this.getClientesHistorico()
 
-    const userId = '941668828183';
-    this.messagingService.requestPermission(userId)
+
+    this.userId = '941668828183';
+    this.token = this.messagingService.requestPermission(this.userId)
     this.messagingService.receiveMessage()
     this.alertMessage = this.messagingService.currentMessage
    
   
   }
-callClient(){
 
-  alert("cliente")
-}
   getColor(setor:string){
-
+if(setor!=''){
 
 
     switch(setor){
-      case 'Caixa':
-        return '#739E4B';
-      case 'ATM':
-        return '#B15D85';
-      case 'Gerente':
-        return '#5F82FF';
 
-        default:'purple';
+      case 'Pagar uma conta': return '#739E4B';
+      case 'TED/DOC': return  '#5F82FF';
+      case 'Dúvidas sobre os Canais': return  '#B15D85';
+      case 'Falar com o Gerente': return '#7CC6D5';
+      case 'Comprar maquininha GetNet' : return '#F4C137';
+      case 'Comprar cartão de crédito': return '#D8232D';
+      case 'Videochat Investimento': return '#F14C4C';
+      case 'Usar Sala de Ações': return '#F88200';
+      default:'black'
     }
-
+  }else{
+    return '#999999'
+  }
+  
   }
 
   myDateTimer() {
@@ -74,9 +80,8 @@ callClient(){
     this.relogio = this.timer.toLocaleTimeString();
     this.day =this.timer.toLocaleDateString();
     this.santander="Santander"
-    // document.getElementById("relogio").innerHTML = this.relogio;
-    // document.getElementById("day").innerHTML = this.day;
-    // document.getElementById("santander").innerHTML = this.santander;
+    document.getElementById("relogio").innerHTML = this.relogio;
+  
   }
 
   getClientes() {
@@ -88,11 +93,28 @@ callClient(){
 
   }
 
+  
+  getClientesHistorico() {
+    this.firebaseService.getClientesHistorico().subscribe(resp => {
+      this.listHistorico = resp
+      this.listHistorico.sort(this.compare)
+    
+    })
+
+  }
+
+addToHistorico(client:Cliente){
+  console.log(client)
+  this.firebaseService.addHistorico(client)
+ //@ts-ignore
+ .then(this.firebaseService.deleteClient(client.id))
+
+}
 
 
   compare(a, b) {
-    const genreA = a.tempo;
-    const genreB = b.tempo;
+    const genreA = a.timestamp;
+    const genreB = b.timestamp;
 
     let comparison = 0;
     if (genreA > genreB) {
@@ -102,4 +124,13 @@ callClient(){
     }
     return comparison;
   }
+
+sendToken(){
+   this.token=this.messagingService.token
+   console.log(this.token)
+
+
+  }
 }
+
+

@@ -138,3 +138,15 @@ ul {
 footer {
     background: #212529;
 }
+.btn-santander {
+    background-color: #de0100 !important;
+    color:white!important;
+    font-weight: bold;
+
+}
+.btn-santander:hover{
+    background-color: #9B0807 !important;
+}
+.hist {
+    height: 500px !important;
+}

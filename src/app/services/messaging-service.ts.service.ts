@@ -14,7 +14,7 @@ export class MessagingService {
 
   currentMessage = new BehaviorSubject(null);
 
-
+public token;
 
   constructor(private angularFireDB: AngularFireDatabase,
     private angularFireAuth: AngularFireAuth,
@@ -39,16 +39,19 @@ export class MessagingService {
      * 
      * @param userId userId
      */
-    requestPermission(userId) {
+    requestPermission(userId){
+       
       this.angularFireMessaging.requestToken.subscribe(
         (token) => {
           console.log(token);
           this.updateToken(userId, token);
-        },
+       this.token=token;
+                  }  ,
         (err) => {
           console.error('Unable to get permission to notify.', err);
         }
       );
+     
     }
   
     /**

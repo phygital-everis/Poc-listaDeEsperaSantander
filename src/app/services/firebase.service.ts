@@ -13,6 +13,7 @@ export class FirebaseService {
   private clientes: Observable<Cliente[]>;
   private historicoCollection: AngularFirestoreCollection<Cliente>;
   private clienteCollection: AngularFirestoreCollection<Cliente>;
+  private historico: Observable<Cliente[]>;
 
   constructor(private afs: AngularFirestore) {
     this.clienteCollection = this.afs.collection<Cliente>('clientes');
@@ -28,14 +29,29 @@ export class FirebaseService {
       })
     );
 
-  }
+  
+  this.historico = this.historicoCollection.snapshotChanges().pipe(
+    map(actions => {
+      return actions.map(a => {
+        const data = a.payload.doc.data();
+        const id = a.payload.doc.id;
+        return { id, ...data };
+      });
+    })
+  );
+
+}
 
   updateClientTime(client: Cliente): Promise<void> {
-    return this.clienteCollection.doc(client.id).update({ tempo: client.hrChegada });
+    return this.clienteCollection.doc(client.id).update({ timestamp: client.timestamp });
   }
 
   getClientes(): Observable<Cliente[]> {
     return this.clientes;
+  }
+
+  getClientesHistorico(): Observable<Cliente[]>  {
+    return this.historico;
   }
 
   getCliente(id: string): Observable<Cliente> {
@@ -63,6 +79,7 @@ export class FirebaseService {
   deleteIdea(id: string): Promise<void> {
     return this.clienteCollection.doc(id).delete();
   }
+  
   deleteClient(id: string): Promise<void> {
     return this.clienteCollection.doc(id).delete();
   }

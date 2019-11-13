@@ -16,30 +16,28 @@
 
                 <div class="row table-title">
 
-                    <div class="col-md-1 ml-0 pl-0 ">Setor</div>
-                    <div class="col-md-3 ">Nome</div>
-                    <div class="col-md-3  ">Serviço</div>
-                    <div class="col-md-3  ">Chegada</div>
-                    <div class="col-md-1  ">&nbsp;</div>
+                    <div class="col-md-3 ml-0 pl-0 ">Serviço</div>
+                    <div class="col-md-4 ">Nome</div>
+                    <div class="col-md-3 ">Chegada</div>
+                    <div class="col-md-1 ">&nbsp;</div>
          
 
                 </div>
-
 
                 <div class="row ">
                     <div class="col-md-12 scroll-bar ">
                         <div *ngFor="let client of listClients | slice:0:15 " class="list-item mt-2 mb-2" >
                             <div class="row ">
 
-                                <div [ngStyle]="{ 'background-color':getColor(client.setor)} " class="setor col-md-1 text-center p-3">{{client.setor}}</div>
+                                <div [ngStyle]="{ 'background-color':getColor(client.service)} " class="setor col-md-3 text-center p-3">{{client.service?client.service:'Sem serviço selecionado'}}</div>
                     
-                                <div class=" col-md-3 my-auto p-3"> {{client.name}} </div>
+                                <div class=" col-md-4 my-auto p-3"> {{client.name}} </div>
 
-                                <div class=" col-md-3 ml-2 my-auto "> {{client.service}} </div>
+                            
 
-                                <div class=" col-md-3 ml-2  my-auto  p-3"> {{client.hrChegada.seconds*1000|date:'hh:mm:ss'}}</div>
+                                <div class=" col-md-3 ml-2  my-auto  p-3"> {{client.timestamp  | date:'hh:mm:ss'}}</div>
 
-                                <div class=" col-md-1 my-auto p-2"> <button class="btn btn-danger " (click)="callClient()">Chamar </button></div>
+                                <div class=" col-md-1 my-auto p-2"> <button class="btn btn-santander " (click)="addToHistorico(client)">Chamar </button></div>
                             </div>
                         </div>
                     </div>
@@ -51,16 +49,16 @@
         </div>
 
         <div class="col-md-4 p-0 m-0 text-size-fila mt-5 ">
-            <div class="  table-title ml-5 mt-3 mb-1">Histórico</div>
+            <div class=" table-title ml-5 mt-3 mb-1">Histórico</div>
 
-            <div class="card-body text-size-fila ml-3 ">
+            <div class="card-body text-size-fila ml-3 w-100 scroll-bar hist ">
 
                 
-                <div *ngFor="let client of listClients | slice:0:10 " class="text-size-fila d-flex pt-1 pb-1 justify-content-between">
+                <div *ngFor="let client of listHistorico  " class="text-size-fila d-flex pt-1 pb-1 justify-content-between">
 
                     <div class="m-0 p-0 text-size-fila text-center ml-3 ">{{client.name}}</div>
                     <div class="m-0 p-0 text-size-fila text-center ml-3 ">{{client.service}} </div>
-                    <div class="text-size-fila text-center ml-3 "> {{client.hrChegada.seconds*1000|date:'hh:mm:ss'}}</div>
+                    <div class="text-size-fila text-center ml-3 "> {{client.timestamp |date:'hh:mm:ss'}}</div>
 
                 </div>
             </div>
@@ -70,6 +68,8 @@
     </div>
 </div>
 
+
 <footer class="col-md-12 fixed-bottom m-0 p-0 footer border-top p-2 ">
     <marquee behavior="alternate " id="day " class="text-white ">{{santander}}</marquee>
-</footer>;
+    <!-- <button class="btn btn-santander " (click)="sendToken()">Habilitar Token </button> -->
+</footer>
