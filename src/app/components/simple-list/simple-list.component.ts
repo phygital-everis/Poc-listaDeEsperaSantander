@@ -34,6 +34,7 @@ export class SimpleListComponent implements OnInit {
   hrChegada :Date;
   token: any;
   userId: string;
+ 
 
   constructor(public firebaseService: FirebaseService,  private messagingService: MessagingService) {
     
@@ -89,6 +90,9 @@ if(setor!=''){
       this.listClients = resp
       this.listClients.sort(this.compare)
     
+     
+ 
+    
     })
 
   }
@@ -97,7 +101,7 @@ if(setor!=''){
   getClientesHistorico() {
     this.firebaseService.getClientesHistorico().subscribe(resp => {
       this.listHistorico = resp
-      this.listHistorico.sort(this.compare)
+      this.listHistorico.sort(this.compareTwo)
     
     })
 
@@ -105,25 +109,40 @@ if(setor!=''){
 
 addToHistorico(client:Cliente){
   console.log(client)
-  this.firebaseService.addHistorico(client)
+
+  this.firebaseService.addHistorico(client, this.hrChegada)
+
  //@ts-ignore
  .then(this.firebaseService.deleteClient(client.id))
 
 }
 
 
-  compare(a, b) {
-    const genreA = a.timestamp;
-    const genreB = b.timestamp;
+compare(a, b) {
+  const genreA = a.timestamp;
+  const genreB = b.timestamp;
 
-    let comparison = 0;
-    if (genreA > genreB) {
-      comparison = 1;
-    } else if (genreA < genreB) {
-      comparison = -1;
-    }
-    return comparison;
+  let comparison = 0;
+  if (genreA > genreB) {
+    comparison = 1;
+  } else if (genreA < genreB) {
+    comparison = -1;
   }
+  return comparison;
+}
+
+compareTwo(a, b) {
+  const genreA = b.timestamp;
+  const genreB = a.timestamp;
+
+  let comparison = 0;
+  if (genreA > genreB) {
+    comparison = 1;
+  } else if (genreA < genreB) {
+    comparison = -1;
+  }
+  return comparison;
+}
 
 sendToken(){
    this.token=this.messagingService.token

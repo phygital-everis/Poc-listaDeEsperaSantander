@@ -35,7 +35,7 @@
 
                             
 
-                                <div class=" col-md-3 ml-2  my-auto  p-3"> {{client.timestamp  | date:'hh:mm:ss'}}</div>
+                                <div class=" col-md-3 ml-2  my-auto  p-3"> {{client.timestamp | date:'H:mm:ss'}}</div>
 
                                 <div class=" col-md-1 my-auto p-2"> <button class="btn btn-santander " (click)="addToHistorico(client)">Chamar </button></div>
                             </div>
@@ -58,7 +58,7 @@
 
                     <div class="m-0 p-0 text-size-fila text-center ml-3 ">{{client.name}}</div>
                     <div class="m-0 p-0 text-size-fila text-center ml-3 ">{{client.service}} </div>
-                    <div class="text-size-fila text-center ml-3 "> {{client.timestamp |date:'hh:mm:ss'}}</div>
+                    <div class="text-size-fila text-center ml-3 "> {{client.timestamp |date:'H:mm:ss'}} -   {{client.timestamp |date:'d/M/yy'}} </div>
 
                 </div>
             </div>

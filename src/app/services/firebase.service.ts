@@ -42,9 +42,9 @@ export class FirebaseService {
 
 }
 
-  updateClientTime(client: Cliente): Promise<void> {
-    return this.clienteCollection.doc(client.id).update({ timestamp: client.timestamp });
-  }
+   updateClientTime(client: Cliente): Promise<void> {
+     return this.clienteCollection.doc(client.id).update({ timestamp: client.timestamp});
+   }
 
   getClientes(): Observable<Cliente[]> {
     return this.clientes;
@@ -59,6 +59,7 @@ export class FirebaseService {
       take(1),
       map(cliente => {
         cliente.id = id;
+        cliente.timestamp=new Date();
         return cliente;
       })
     );
@@ -68,7 +69,7 @@ export class FirebaseService {
     return this.clienteCollection.add(cliente);
   }
 
-  addHistorico(cliente: Cliente): Promise<DocumentReference> {
+  addHistorico(cliente: Cliente, hr:Date): Promise<DocumentReference> {
     return this.historicoCollection.add(cliente);
   }
 
